@@ -1,0 +1,127 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1687949026359-1
+      author: stalk (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: car_pkey
+                  name: id
+                  startWith: 1
+                  type: BIGINT
+              - column:
+                  name: brand
+                  type: VARCHAR(255)
+              - column:
+                  name: fuel
+                  type: VARCHAR(255)
+              - column:
+                  name: model
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INTEGER
+            tableName: car
+  - changeSet:
+      id: 1687949026359-2
+      author: stalk (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: manager_pkey
+                  name: id
+                  startWith: 1
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: experience
+                  type: INTEGER
+              - column:
+                  name: firstname
+                  type: VARCHAR(255)
+              - column:
+                  name: lastname
+                  type: VARCHAR(255)
+              - column:
+                  name: passport_id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sale
+                  type: INTEGER
+            tableName: manager
+  - changeSet:
+      id: 1687949026359-3
+      author: stalk (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: sale_pkey
+                  name: id
+                  startWith: 1
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: INTEGER
+              - column:
+                  constraints:
+                    nullable: false
+                  name: car_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: manager_id
+                  type: BIGINT
+            tableName: sale
+  - changeSet:
+      id: 1687949026359-4
+      author: stalk (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: manager_id
+            baseTableName: sale
+            constraintName: fk3g7learicuqkit6ullr6erfik
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: manager
+  - changeSet:
+      id: 1687949026359-5
+      author: stalk (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: car_id
+            baseTableName: sale
+            constraintName: fk99jdj9wyee14950vox07kjqdj
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: car
+

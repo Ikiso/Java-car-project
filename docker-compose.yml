@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_USER: stalk
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: demo
+    volumes:
+      - demo:/pgdata
+
+
+volumes:
+  demo:
