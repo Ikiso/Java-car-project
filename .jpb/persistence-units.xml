@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default" defaultIncludeChangeLogFile="src/main/resources/db/changelog/db.changelog-master.yml" defaultSearchScope="Project">
+      <persistence-unit name="Default" defaultIncludeChangeLogFile="src/main/resources/db/changelog/0.0.1/changelog-0.0.1-master.yaml" defaultSearchScope="Project">
         <packages>
           <package value="com.example.demo" />
         </packages>

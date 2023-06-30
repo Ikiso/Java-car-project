@@ -26,6 +26,8 @@ public class Car {
 
     private int quantity;
 
+    private String searchSimilar;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore

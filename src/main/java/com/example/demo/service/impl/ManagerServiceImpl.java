@@ -16,6 +16,7 @@ import java.util.List;
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ManagerServiceImpl implements ManagerService {
 
     private final ManagerRepository managerRepository;
@@ -24,18 +25,16 @@ public class ManagerServiceImpl implements ManagerService {
 
 
     @Override
-    @Transactional(readOnly = true)
     public List<ManagerDto> getAllManager() {
         List<Manager> managerList = managerRepository.findAll();
 
         List<ManagerDto> managerDtoList = managerMapper.listCarToListCarDto(managerList);
-        log.info("Место: ManagerServiceImpl; Метод: getAllManager; Сущность: List<ManagerDto> " + managerDtoList);
+        log.info("Менеджеры были получены");
 
         return managerDtoList;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public ManagerDto getManagerById(Long id) {
         Manager manager = getManager(id);
 

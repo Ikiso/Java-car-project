@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1688041442340-1
+      author: stalk (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: search_similar
+                  type: VARCHAR(255)
+            tableName: car
+

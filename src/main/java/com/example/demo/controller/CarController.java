@@ -3,8 +3,11 @@ package com.example.demo.controller;
 import com.example.demo.dto.CarDto;
 import com.example.demo.dto.UpdateCarDto;
 import com.example.demo.service.CarService;
+import com.example.demo.validator.CarValidator;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,48 +15,52 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/cars")
+@RequestMapping("api/cars")
 public class CarController {
 
+    private final CarValidator carValidator;
     private final CarService carService;
 
+
     @ResponseStatus(value = HttpStatus.OK)
-    @GetMapping("/all")
-    public List<CarDto> getAllCars() {
+    @GetMapping
+    public List<CarDto> getAll() {
         return carService.getAllCars();
     }
 
-    @PostMapping("/create")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public  CarDto createCar(@RequestBody CarDto carDto) {
+    public CarDto create(@Valid @RequestBody CarDto carDto, Errors errors) {
+        carValidator.validate(carDto, errors);
         CarDto createdCarDto = carService.createCar(carDto);
         return createdCarDto;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public  CarDto getCarById(@PathVariable Long id) {
         return carService.getCarById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCarById(@PathVariable Long id) {
-        carService.deleteCarById(id);
+    public void delete(@PathVariable Long id) {
+        carService.deleteCar(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UpdateCarDto updateCar(@PathVariable Long id,
-                                  @RequestBody UpdateCarDto updateCarDto) {
+    public UpdateCarDto update(@PathVariable Long id,
+                               @Valid @RequestBody UpdateCarDto updateCarDto) {
         UpdateCarDto resultUpdate = carService.fullUpdateCar(id, updateCarDto);
         return resultUpdate;
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UpdateCarDto updateCarPartially(@PathVariable Long id,
+    public UpdateCarDto updatePartially(@PathVariable Long id,
                                            @RequestBody UpdateCarDto updateCarDto) {
         UpdateCarDto resultUpdate = carService.partialUpdateCar(id, updateCarDto);
         return resultUpdate;
     }
+
 }

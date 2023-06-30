@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:15.0://fakedb
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.yaml
+  main:
+    allow-bean-definition-overriding: true

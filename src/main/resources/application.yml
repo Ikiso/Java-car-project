@@ -7,6 +7,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  messages:
+    basename: i18n/messages
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.yaml
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+  main:
+    allow-bean-definition-overriding: true
+
 

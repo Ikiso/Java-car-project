@@ -12,7 +12,7 @@ public interface CarService {
 
     CarDto createCar(CarDto carDTO);
 
-    void deleteCarById(Long id);
+    void deleteCar(Long id);
 
     UpdateCarDto fullUpdateCar(Long id, UpdateCarDto fullUpdateCarDto);
 

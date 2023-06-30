@@ -10,47 +10,47 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/managers")
+@RequestMapping("api/managers")
 @RequiredArgsConstructor
 public class ManagerController {
 
     private final ManagerService managerService;
 
-    @GetMapping("/all")
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<ManagerDto> getAllManager() {
+    public List<ManagerDto> getAll() {
         return managerService.getAllManager();
     }
 
-    @PostMapping("/create")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ManagerDto createManager(@RequestBody ManagerDto managerDto) {
+    public ManagerDto create(@RequestBody ManagerDto managerDto) {
         return managerService.createManager(managerDto);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
     public ManagerDto getManagerById(@PathVariable Long id) {
         return managerService.getManagerById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void  deleteManagerById(@PathVariable Long id) {
+    public void  delete(@PathVariable Long id) {
         managerService.deleteManagerById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UpdateManagerDto updateManager(@PathVariable Long id,
+    public UpdateManagerDto update(@PathVariable Long id,
                                                           @RequestBody UpdateManagerDto updateManagerDto) {
         UpdateManagerDto resultUpdate = managerService.fullUpdateManager(id, updateManagerDto);
         return resultUpdate;
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UpdateManagerDto updateManagerPartial(@PathVariable Long id,
+    public UpdateManagerDto updatePartial(@PathVariable Long id,
                                                                  @RequestBody UpdateManagerDto updateManagerDto) {
         UpdateManagerDto resultUpdate = managerService.partialUpdateManager(id, updateManagerDto);
         return resultUpdate;
