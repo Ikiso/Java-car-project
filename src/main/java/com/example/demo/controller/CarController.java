@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.CarDto;
 import com.example.demo.dto.UpdateCarDto;
+import com.example.demo.service.CarSearch;
 import com.example.demo.service.CarService;
 import com.example.demo.validator.CarValidator;
 import jakarta.validation.Valid;
@@ -20,6 +21,7 @@ public class CarController {
 
     private final CarValidator carValidator;
     private final CarService carService;
+    private final CarSearch carSearch;
 
 
     @ResponseStatus(value = HttpStatus.OK)
@@ -62,5 +64,11 @@ public class CarController {
         UpdateCarDto resultUpdate = carService.partialUpdateCar(id, updateCarDto);
         return resultUpdate;
     }
+
+    @PostMapping("/search")
+    public List<CarDto> searchCars(@RequestBody String query) {
+        return carSearch.searchCars(query);
+    }
+
 
 }

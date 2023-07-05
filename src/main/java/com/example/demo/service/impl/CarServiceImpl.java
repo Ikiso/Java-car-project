@@ -45,6 +45,7 @@ public class CarServiceImpl implements CarService {
 
         CarDto carDto = carMapper.carToCarDTO(car);
 
+        //TODO: разделить логику
         log.info(messageConfig
                 .getMessage("car.get.car.by.id"));
 

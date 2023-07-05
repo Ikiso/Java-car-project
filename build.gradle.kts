@@ -29,9 +29,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")
-    implementation("org.elasticsearch.client:elasticsearch-rest-high-level-client:7.17.5")
-    implementation("org.elasticsearch:elasticsearch")
-    implementation("org.elasticsearch.client:elasticsearch-rest-client")
 
     testImplementation("org.projectlombok:lombok:1.18.26")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
